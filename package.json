@@ -1,0 +1,50 @@
+{
+	"name": "use-chromecast-caf-sender",
+	"version": "0.0.0",
+	"description": "",
+	"main": "./dist/index.js",
+	"module": "./dist/index.es.js",
+	"types": "./dist/index.d.ts",
+	"scripts": {
+		"start": "rollup --configPlugin typescript -c -w",
+		"dev": "npm start",
+		"build": "rollup --configPlugin typescript -c",
+		"prepare": "npm run build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/FilipChalupa/use-chromecast-caf-sender.git"
+	},
+	"keywords": [
+		"chromecast",
+		"sender",
+		"typescript",
+		"react"
+	],
+	"author": {
+		"name": "Filip Chalupa",
+		"email": "chalupa.filip@gmail.com",
+		"url": "https://www.npmjs.com/~onset"
+	},
+	"license": "ISC",
+	"peerDependencies": {
+		"react": "17 || 18"
+	},
+	"files": [
+		"/dist/"
+	],
+	"devDependencies": {
+		"@rollup/plugin-commonjs": "^24.0.0",
+		"@rollup/plugin-node-resolve": "^15.0.1",
+		"@rollup/plugin-typescript": "^11.0.0",
+		"@types/react": "^18.0.26",
+		"react": "^18.2.0",
+		"rollup": "^3.9.1",
+		"rollup-plugin-peer-deps-external": "^2.2.4",
+		"rollup-plugin-typescript2": "^0.34.1",
+		"typescript": "^4.9.4"
+	},
+	"dependencies": {
+		"@types/chromecast-caf-sender": "^1.0.5"
+	}
+}
