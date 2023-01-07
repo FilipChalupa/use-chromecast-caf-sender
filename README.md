@@ -11,15 +11,8 @@ npm install use-chromecast-caf-sender
 ```jsx
 import { useChromecastSender } from 'use-chromecast-caf-sender'
 
-const options = {
-	receiverApplicationId: 'XXXXXXXX',
-	autoJoinPolicy: chrome.cast.AutoJoinPolicy.PAGE_SCOPED,
-	language: 'en',
-	resumeSavedSession: true,
-}
-
 const Component = () => {
-	const { cast } = useChromecastSender(options)
+	const { cast } = useChromecastSender()
 
 	return <div>{cast === null ? 'Loading' : 'Cast sender sdk is loaded'}</div>
 }
