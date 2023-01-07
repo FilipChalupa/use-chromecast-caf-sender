@@ -5,18 +5,25 @@ type Sender = {
 	cast: typeof cast
 }
 
+type Options = (
+	cast: Sender['cast'],
+	chrome: Sender['chrome'],
+) => cast.framework.CastOptions
+
 const load = (() => {
 	let promise: Promise<Sender> | null = null
 
-	return (options: cast.framework.CastOptions) => {
+	return (options: Options) => {
 		if (promise === null) {
-			promise = new Promise((resolve, reject) => {
+			promise = new Promise((resolve) => {
 				const script = document.createElement('script')
 				script.src =
 					'https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1'
 				window.__onGCastApiAvailable = (isAvailable) => {
 					if (isAvailable) {
-						cast.framework.CastContext.getInstance().setOptions(options)
+						cast.framework.CastContext.getInstance().setOptions(
+							options(cast, chrome),
+						)
 						resolve({
 							chrome,
 							cast,
@@ -30,7 +37,7 @@ const load = (() => {
 	}
 })()
 
-export const useChromecastSender = (options: cast.framework.CastOptions) => {
+export const useChromecastSender = (options: Options) => {
 	const [sender, setSender] = useState<Sender | { chrome: null; cast: null }>({
 		chrome: null,
 		cast: null,
