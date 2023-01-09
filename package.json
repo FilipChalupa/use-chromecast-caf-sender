@@ -1,7 +1,7 @@
 {
 	"name": "use-chromecast-caf-sender",
 	"version": "0.0.4",
-	"description": "",
+	"description": "React hook to use the Chromecast sender SDK in your project.",
 	"main": "./dist/index.js",
 	"module": "./dist/index.es.js",
 	"types": "./dist/index.d.ts",
